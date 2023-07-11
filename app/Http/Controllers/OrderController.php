@@ -86,6 +86,7 @@ class OrderController extends Controller
             'weight' => 'required',
             'payment' => 'required',
             'status' => 'required',
+            'total_amount' => 'required',
             'laundry_id' => 'required',
             'user_id' => 'required'
             ]);
@@ -137,6 +138,7 @@ class OrderController extends Controller
                 'weight' => 'required',
                 'payment' => 'required',
                 'status' => 'required',
+                'total_amount' => 'required',
                 'laundry_id' => 'required',
                 'user_id' => 'required'
             ]);
