@@ -41,7 +41,7 @@ class DetailOrderController extends Controller
             'order_id' => 'required',
             ]);
 
-            return $createDetail = $request->all();
+            $createDetail = $request->all();
             // $createOrder['user_id'] = Auth::user()->id;
 
             $detail = DetailOrder::create($createDetail);
