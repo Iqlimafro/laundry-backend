@@ -39,7 +39,7 @@ class ItemsController extends Controller
             'laundry_id' => 'required'
             ]);
 
-            return $createItems = $request->all();
+            $createItems = $request->all();
             // $createOrder['user_id'] = Auth::user()->id;
 
             $items = Items::create($createItems);
