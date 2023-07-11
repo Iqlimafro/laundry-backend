@@ -83,9 +83,8 @@ class OrderController extends Controller
             $request->validate([
             'type' => 'required',
             'pickup' => 'required',
-            'weight' => 'required',
-            'payment' => 'required',
             'status' => 'required',
+            'weight' => 'required',
             'total_amount' => 'required',
             'user_id' => 'required',
             'laundry_id' => 'required',
