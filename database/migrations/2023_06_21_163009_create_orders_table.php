@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('status');
             $table->integer('weight');
             $table->integer('total_amount');
-            $table->foreignId('user_id')->unique()->constrained('users');
-            $table->foreignId('laundry_id')->unique()->constrained('laundries');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('laundry_id')->constrained('laundries');
             $table->timestamps();
         });
     }
