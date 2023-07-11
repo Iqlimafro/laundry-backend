@@ -87,8 +87,8 @@ class OrderController extends Controller
             'payment' => 'required',
             'status' => 'required',
             'total_amount' => 'required',
+            'user_id' => 'required',
             'laundry_id' => 'required',
-            'user_id' => 'required'
             ]);
 
             return $createOrder = $request->all();
