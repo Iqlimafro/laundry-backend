@@ -46,9 +46,6 @@ class LaundryController extends Controller
             $createLaundry = $request->all();
             $createLaundry['user_id'] = Auth::user()->id;
 
-            $path = $request->gambar->save('/gambar');
-            $createLaundry['image'] = $path;
-
             $laundry = Laundries::create($createLaundry);
 
             if($laundry){
