@@ -15,10 +15,10 @@ class Laundries extends Model
     protected $table = 'laundries';
     protected $guarded = ['id'];
 
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id');
-    // }
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function laundries()
     {
