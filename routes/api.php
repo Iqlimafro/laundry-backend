@@ -40,6 +40,7 @@ Route::get('/get-items/show/{laundry_id}', [ItemsController::class, 'show']);
 
 //detail order
 Route::get('/get-detail', [DetailOrderController::class, 'index']);
+Route::get('/get-detail/show/{order_id}', [DetailOrderController::class, 'index']);
 Route::post('/add-detail', [DetailOrderController::class, 'store']);
 Route::post('/update-detail', [DetailOrderController::class, 'update']);
 

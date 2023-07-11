@@ -62,9 +62,14 @@ class DetailOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($order_id)
     {
-        //
+        $order = DetailOrder::where('order_id', $order_id)->get();
+        if($order){
+            return ApiFormatter::createApi(200, 'Success', $order);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
     }
 
     /**
