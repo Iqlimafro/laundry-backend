@@ -150,6 +150,25 @@ class OrderController extends Controller
         }
     }
 
+    public function ubahStatus(Request $request, $id)
+    {
+        try
+        {
+            $request->validate([
+                'status' => 'required',
+                'laundry_id' => 'required',
+                'user_id' => 'required'
+            ]);
+
+            $order = Order::findOrFail($id);
+            $order->update($request->all());
+
+            return ApiFormatter::createApi(200, 'Success', $order);
+            } catch (Exception $error) {
+                return ApiFormatter::createApi(400, 'Failed', $error);
+            }
+        }
+
     /**
      * Remove the specified resource from storage.
      *

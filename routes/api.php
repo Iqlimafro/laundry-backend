@@ -16,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', function (Request $request) {
         return $request->user();
+
     });
 });
 
@@ -28,9 +29,7 @@ Route::get('/get-order', [OrderController::class, 'index']);
 Route::get('/get-order/show/{user_id}', [OrderController::class, 'show']);
 Route::post('/add-order', [OrderController::class, 'store']);
 Route::post('/update-order', [OrderController::class, 'update']);
-Route::get('/get-orderDate', [OrderController::class, 'getByDate']);
-Route::get('/get-orderStatus', [OrderController::class, 'getByStatus']);
-Route::get('/get-orderHistory', [OrderController::class, 'getHistoryOrder']);
+Route::post('/update-status', [OrderController::class, 'ubahStatus']);
 
 //items
 Route::get('/get-items', [ItemsController::class, 'index']);
@@ -43,6 +42,12 @@ Route::get('/get-items/show/{laundry_id}', [ItemsController::class, 'show']);
 Route::get('/get-detail', [DetailOrderController::class, 'index']);
 Route::post('/add-detail', [DetailOrderController::class, 'store']);
 Route::post('/update-detail', [DetailOrderController::class, 'update']);
+
+
+
+Route::get('/get-orderDate', [OrderController::class, 'getByDate']);
+Route::get('/get-orderStatus', [OrderController::class, 'getByStatus']);
+Route::get('/get-orderHistory', [OrderController::class, 'getHistoryOrder']);
 
 Route::group(['middleware' => ['auth:sanctum', 'mitra']], function() {
     Route::post('/add-laundry', [LaundryController::class,'store']);
