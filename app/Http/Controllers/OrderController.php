@@ -90,9 +90,7 @@ class OrderController extends Controller
             'laundry_id' => 'required',
             ]);
 
-            return $createOrder = $request->all();
-            // $createOrder['user_id'] = Auth::user()->id;
-
+            $createOrder = $request->all();
             $order = Order::create($createOrder);
 
             if($order){
