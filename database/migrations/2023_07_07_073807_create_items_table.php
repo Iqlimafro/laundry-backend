@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
             $table->integer('price_pcs');
             $table->foreignId('laundry_id')->constrained('laundries');
             $table->timestamps();

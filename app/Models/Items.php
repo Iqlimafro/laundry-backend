@@ -15,7 +15,7 @@ class Items extends Model
 
     public function laundries()
     {
-        return $this->belongsTo(Laundries::class);
+        return $this->belongsTo(Laundries::class,'laundry_id');
     }
     public function detailOrder()
     {

@@ -35,7 +35,6 @@ class ItemsController extends Controller
         try {
             $request->validate([
             'name' => 'required',
-            'image' => 'required',
             'price_pcs' => 'required',
             'laundry_id' => 'required'
             ]);
@@ -83,7 +82,6 @@ class ItemsController extends Controller
         try {
             $request->validate([
                 'name' => 'required',
-                'image' => 'required',
                 'price_pcs' => 'required',
                 'laundry_id' => 'required'
             ]);
