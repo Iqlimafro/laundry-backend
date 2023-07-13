@@ -27,6 +27,7 @@ Route::get('/get-laundry/show/{user_id}', [LaundryController::class,'show']);
 //order
 Route::get('/get-order', [OrderController::class, 'index']);
 Route::get('/get-order/show/{user_id}', [OrderController::class, 'show']);
+Route::get('/get-order/laundry/{laundry_id}', [OrderController::class, 'getOrderByLaundryId']);
 Route::post('/add-order', [OrderController::class, 'store']);
 Route::post('/update-order', [OrderController::class, 'update']);
 Route::post('/update-status', [OrderController::class, 'ubahStatus']);

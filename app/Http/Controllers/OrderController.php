@@ -119,6 +119,16 @@ class OrderController extends Controller
         }
     }
 
+    public function getOrderByLaundryId($laundry_id)
+    {
+        $order = Order::where('laundry_id', $laundry_id)->get();
+        if($order){
+            return ApiFormatter::createApi(200, 'Success', $order);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *
