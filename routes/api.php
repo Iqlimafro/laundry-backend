@@ -33,6 +33,8 @@ Route::post('/update-order', [OrderController::class, 'update']);
 Route::post('/update-order-amount/{id}', [OrderController::class, 'updateTotalAmount']);
 Route::post('/update-order-status-weight/{id}', [OrderController::class, 'updateStatusWeight']);
 Route::post('/update-order-status/{id}', [OrderController::class, 'ubahStatus']);
+Route::post('/add-order-total', [OrderController::class, 'post']);
+Route::post('/uodate-order-total/{id}', [OrderController::class, 'updateAll']);
 
 //items
 Route::get('/get-items', [ItemsController::class, 'index']);

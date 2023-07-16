@@ -103,6 +103,81 @@ class OrderController extends Controller
         }
     }
 
+    public function post(Request $request)
+    {
+        try {
+            $request->validate([
+                'type' => 'required',
+                'pickup' => 'required',
+                'status' => 'required',
+                'weight' => 'required',
+                'user_id' => 'required',
+                'laundry_id' => 'required',
+            ]);
+
+            // Ambil harga per kilo dari tabel Laundry berdasarkan laundry_id
+            $laundry = Laundries::findOrFail($request->input('laundry_id'));
+            $priceKilo = $laundry->price_kilo;
+
+            // Hitung total amount
+            $totalAmount = $request->input('weight') * $priceKilo;
+
+            // Buat data order baru
+            $order = new Order();
+            $order->type = $request->input('type');
+            $order->pickup = $request->input('pickup');
+            $order->status = $request->input('status');
+            $order->weight = $request->input('weight');
+            $order->total_amount = $totalAmount; // Simpan hasil perkalian di sini
+            $order->user_id = $request->input('user_id');
+            $order->laundry_id = $request->input('laundry_id');
+            $order->save();
+
+            return ApiFormatter::createApi(201, 'Success', $order);
+        } catch (Exception $error) {
+            return ApiFormatter::createApi(400, 'Failed', $error);
+        }
+    }
+
+    public function updateAll(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'status' => 'required',
+                'weight' => 'required',
+            ]);
+
+            $order = Order::findOrFail($id);
+
+            // Jika weight berubah, hitung ulang total_amount
+            if ($request->has('weight') && $order->weight != $request->input('weight')) {
+                // Ambil harga per kilo dari tabel Laundry berdasarkan laundry_id yang ada pada request
+                $laundry = Laundries::findOrFail($request->input('laundry_id'));
+                $priceKilo = $laundry->price_kilo;
+
+                // Hitung total amount
+                $totalAmount = $request->input('weight') * $priceKilo;
+                $order->total_amount = $totalAmount;
+            }
+
+            $order->status = $request->input('status');
+            $order->weight = $request->input('weight');
+            $order->save();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Success',
+                'data' => $order
+            ]);
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Failed',
+                'error' => $error->getMessage()
+            ]);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
