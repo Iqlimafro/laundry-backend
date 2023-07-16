@@ -164,7 +164,6 @@ class OrderController extends Controller
         {
             $request->validate([
                 "weight" =>'required',
-                "total_amount" =>'required',
             ]);
 
             $order = Order::findOrFail($id);

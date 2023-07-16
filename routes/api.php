@@ -30,8 +30,8 @@ Route::get('/get-order/show/{user_id}', [OrderController::class, 'show']);
 Route::get('/get-order/laundry/{laundry_id}', [OrderController::class, 'getOrderByLaundryId']);
 Route::post('/add-order', [OrderController::class, 'store']);
 Route::post('/update-order', [OrderController::class, 'update']);
-Route::post('/update-order-amount', [OrderController::class, 'updateTotalAmount']);
-Route::post('/update-order-status', [OrderController::class, 'ubahStatus']);
+Route::post('/update-order-amount/{id}', [OrderController::class, 'updateTotalAmount']);
+Route::post('/update-order-status/{id}', [OrderController::class, 'ubahStatus']);
 
 //items
 Route::get('/get-items', [ItemsController::class, 'index']);
