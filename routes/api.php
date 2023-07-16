@@ -31,6 +31,7 @@ Route::get('/get-order/laundry/{laundry_id}', [OrderController::class, 'getOrder
 Route::post('/add-order', [OrderController::class, 'store']);
 Route::post('/update-order', [OrderController::class, 'update']);
 Route::post('/update-order-amount/{id}', [OrderController::class, 'updateTotalAmount']);
+Route::post('/update-order-status-weight/{id}', [OrderController::class, 'updateStatusWeight']);
 Route::post('/update-order-status/{id}', [OrderController::class, 'ubahStatus']);
 
 //items
