@@ -121,7 +121,11 @@ class OrderController extends Controller
 
     public function getOrderByLaundryId($laundry_id)
     {
-        $order = Order::where('laundry_id', $laundry_id)->get();
+        $order = Order::where('laundry_id', $laundry_id)
+        ->with(['users' => function ($query) {
+            $query->select('username');
+        }])
+        ->get();
         if($order){
             return ApiFormatter::createApi(200, 'Success', $order);
         }else{
