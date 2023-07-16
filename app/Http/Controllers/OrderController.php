@@ -182,6 +182,7 @@ class OrderController extends Controller
             $request->validate([
                 "weight" =>'required',
                 'status' => 'required',
+                'total_amount' => 'required',
             ]);
 
             $order = Order::findOrFail($id);
