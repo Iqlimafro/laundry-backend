@@ -122,7 +122,7 @@ class OrderController extends Controller
     public function getOrderByLaundryId($laundry_id)
     {
         $order = Order::where('laundry_id', $laundry_id)
-        ->with(['users' => function ($query) {
+        ->with(['user' => function ($query) {
             $query->select('username');
         }])
         ->get();
