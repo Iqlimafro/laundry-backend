@@ -144,6 +144,7 @@ class OrderController extends Controller
         try {
             $request->validate([
                 'status' => 'required',
+                'value' => 'required',
                 'weight' => 'required',
             ]);
 
@@ -152,8 +153,9 @@ class OrderController extends Controller
             // Jika weight berubah, hitung ulang total_amount
             if ($request->has('weight') && $order->weight != $request->input('weight')) {
                 // Ambil harga per kilo dari tabel Laundry berdasarkan laundry_id yang ada pada request
-                $laundry = Laundries::findOrFail($request->input('laundry_id'));
-                $priceKilo = $laundry->price_kilo;
+
+                // $laundry = Laundries::findOrFail($request->input('laundry_id'));
+                $priceKilo = $request->value;
 
                 // Hitung total amount
                 $totalAmount = $request->input('weight') * $priceKilo;
