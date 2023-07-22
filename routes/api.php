@@ -57,5 +57,5 @@ Route::get('/get-orderHistory', [OrderController::class, 'getHistoryOrder']);
 
 Route::group(['middleware' => ['auth:sanctum', 'mitra']], function() {
     Route::post('/add-laundry', [LaundryController::class,'store']);
-    // Route::get('/get-laundry', [LaundryController::class,'index']);
+    Route::get('/fetch-laundry', [LaundryController::class,'getLaundry']);
 });

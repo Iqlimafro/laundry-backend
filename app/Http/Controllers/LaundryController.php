@@ -58,6 +58,16 @@ class LaundryController extends Controller
         }
     }
 
+    public function getLaundry()
+    {
+        $data = Laundries::with('users')->where('user_id', Auth::user()->id)->first();
+        if($data){
+            return ApiFormatter::createApi(200, 'Success', $data);
+        }else{
+            return ApiFormatter::createApi(400, 'failed');
+        }
+    }
+
     /**
      * Display the specified resource.
      *
